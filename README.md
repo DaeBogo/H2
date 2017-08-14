@@ -4,5 +4,5 @@ This repo is containing all the code that is written to our MSSQL DB, GUI & ever
 
 Project name: Sygehus Nord.
 
-This repository is made in collaboration with Henenene, Jannickb & HappyhairedBirdface.
+This repository is made in collaboration with DaeBogo, Henenene, jannickb & HappyhairedBirdface.
 
