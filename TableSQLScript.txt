@@ -1,0 +1,39 @@
+******************************************************************
+*  Summary:
+*  This document is our table script for the MSSQL DB.
+******************************************************************
+*  Author of document:
+*  DaeBogo - Daniel
+*
+*  Author of code:
+*  DaeBogo, jannickb, HappyhairedBirdface, Henenene
+******************************************************************
+*  Log:
+*  14/8/17: Document created, tables written & uploaded to Github.
+******************************************************************
+
+/* Multiple tables will be created via these lines.
+   The tables getting created are: Ailment, Booking, MedicalChart,
+   MedicalRecord, Meds, Patients, PatiMeds, PersonalInfo, Status &
+   Treatment. */
+
+  CREATE TABLE Ailment
+    (ID INTEGER PRIMARY KEY, Ailment TEXT);
+  CREATE TABLE Booking
+    (ID INTEGER PRIMARY KEY, PID INTEGER, Room TEXT, Schedule DATE, DrID INTEGER);
+  CREATE TABLE MedicalChart
+    (ID INTEGER PRIMARY KEY, PID INTEGER, AilmentID INTEGER, DrID INTEGER, WardID INTEGER, Room TEXT, StatusID INTEGER, PatiMedsID INTEGER, Notes TEXT, Hospital TEXT, In_date DATE, Out_Date DATE);
+  CREATE TABLE MedicalRecord
+    (ID INTEGER PRIMARY KEY, MedicalChartID INTEGER);
+  CREATE TABLE Meds
+    (ID INTEGER PRIMARY KEY, Name TEXT, Effect TEXT);
+  CREATE TABLE Patients
+    (PID INTEGER PRIMARY KEY);
+  CREATE TABLE PatiMeds
+    (ID INTEGER PRIMARY KEY, PID INTEGER, MedsID INTEGER);
+  CREATE TABLE PersonalInfo
+    (ID INTEGER PRIMARY KEY, PID INTEGER, Name TEXT, CPR TEXT, Mail TEXT, Phone INTEGER, Address TEXT, Sex TEXT, Age INTEGER);
+  CREATE TABLE  Status
+    (ID INTEGER PRIMARY KEY, StatusID INTEGER, Status_Info TEXT);
+  CREATE TABLE Treatment
+    (ID INTEGER PRIMARY KEY, PID INTEGER, Exam TEXT, Schedule DATE, Treatment TEXT);
