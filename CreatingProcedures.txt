@@ -1,0 +1,24 @@
+*******************************************
+*  Summery: 
+*  It creates fucking procedures "i mean, filename? anyone??"
+*******************************************
+*  Author of Document & Code
+*  Henenene
+*  
+*******************************************
+*  log:
+*  15/08/17 Created the document & code written
+*******************************************
+
+  /*Creating pocedures*/
+  
+  CREATE PROCEDURE getSomeUsefullData 
+  AS
+  BEGIN--SET NOCOUNT ON added to prevent extra result sets from
+  --interfering with SELECT statements.
+
+  SET NOCOUNT ON;
+  SELECT * FROM Patients WHERE 
+	(SELECT PersonalInfo.Age FROM PersonalInfo  WHERE Age = PersonalInfo.Age)>0
+  END
+  GO
