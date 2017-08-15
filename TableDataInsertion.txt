@@ -1,0 +1,41 @@
+************************************************
+*  Summary:
+*  This code inserts data into our tables.
+************************************************
+*  Author of document:
+*  Henenene & DaeBogo
+*
+*  Author of code:
+*  Henenene, jannickb & HappyhairedBirdface
+************************************************
+*  Log:
+*  15/8/17: Document created and written (V. 1)
+************************************************
+
+  /*Inserting some random data into the tables, so we have something to work with 
+   ~Henenene
+  */
+
+  INSERT INTO Ailment VALUES(1,'Gunshot wound');
+  INSERT INTO Ailment VALUES(2,'Internal bleeding');
+  INSERT INTO Ailment VALUES(3,'Anorexia');
+  INSERT INTO Ailment VALUES(4,'Broken bone(s)');
+  INSERT INTO Ailment VALUES(5,'Crying inside');
+  INSERT INTO Ailment VALUES(6,'Crying outside');
+  INSERT INTO Ailment VALUES(7,'Self suffercating');
+  INSERT INTO Ailment VALUES(8,'Home sick');
+  INSERT INTO Ailment VALUES(9,'Brain-dead');
+  INSERT INTO Ailment VALUES(10,'Homosexuality');
+  INSERT INTO Ailment VALUES(11,'Auto Erotic Asphyxiation')
+  INSERT INTO Ailment VALUES(12,'Moldy Autism');
+  INSERT INTO Ailment VALUES(13,'Léprosy');
+
+
+
+  --INSERT INTO Ailment VALUES(,'');
+
+  INSERT INTO Ailment VALUES(11,'');
+  INSERT INTO PersonalInfo VALUES(1,1,'Henrik Eriksen','270398-0911',24246754,'Elmevej 39, 9500, Hobro','male', 19);
+  INSERT INTO PersonalInfo VALUES(2,2,'Daniel Skriver','290899-2222',61862811,'Skolehjem, 9000, aalborg','male', 17);
+  INSERT INTO PersonalInfo VALUES(1,1,'Sebastian Baasch','131191-2179',31410778,'Sigrid Undsetsvej 272A, 9220, Aalborg Øst','male', 25);
+  INSERT INTO PersonalInfo VALUES(1,1,'Jannick Borup','030491-1337',30342848,'østerågade 13,2 9000 aalborg','male', 26);
