@@ -1,0 +1,410 @@
+USE [master]
+GO
+/****** Object:  Database [Sygehus_Nord_Patiens]    Script Date: 28/08/2017 09:35:53 ******/
+CREATE DATABASE [Sygehus_Nord_Patiens]
+ CONTAINMENT = NONE
+ ON  PRIMARY 
+( NAME = N'Sygehus_Nord_Patiens', FILENAME = N'C:\Program Files\Microsoft SQL Server\MSSQL13.MSSQLSERVER\MSSQL\DATA\Sygehus_Nord_Patiens.mdf' , SIZE = 8192KB , MAXSIZE = UNLIMITED, FILEGROWTH = 65536KB )
+ LOG ON 
+( NAME = N'Sygehus_Nord_Patiens_log', FILENAME = N'C:\Program Files\Microsoft SQL Server\MSSQL13.MSSQLSERVER\MSSQL\DATA\Sygehus_Nord_Patiens_log.ldf' , SIZE = 8192KB , MAXSIZE = 2048GB , FILEGROWTH = 65536KB )
+GO
+ALTER DATABASE [Sygehus_Nord_Patiens] SET COMPATIBILITY_LEVEL = 130
+GO
+IF (1 = FULLTEXTSERVICEPROPERTY('IsFullTextInstalled'))
+begin
+EXEC [Sygehus_Nord_Patiens].[dbo].[sp_fulltext_database] @action = 'enable'
+end
+GO
+ALTER DATABASE [Sygehus_Nord_Patiens] SET ANSI_NULL_DEFAULT OFF 
+GO
+ALTER DATABASE [Sygehus_Nord_Patiens] SET ANSI_NULLS OFF 
+GO
+ALTER DATABASE [Sygehus_Nord_Patiens] SET ANSI_PADDING OFF 
+GO
+ALTER DATABASE [Sygehus_Nord_Patiens] SET ANSI_WARNINGS OFF 
+GO
+ALTER DATABASE [Sygehus_Nord_Patiens] SET ARITHABORT OFF 
+GO
+ALTER DATABASE [Sygehus_Nord_Patiens] SET AUTO_CLOSE OFF 
+GO
+ALTER DATABASE [Sygehus_Nord_Patiens] SET AUTO_SHRINK OFF 
+GO
+ALTER DATABASE [Sygehus_Nord_Patiens] SET AUTO_UPDATE_STATISTICS ON 
+GO
+ALTER DATABASE [Sygehus_Nord_Patiens] SET CURSOR_CLOSE_ON_COMMIT OFF 
+GO
+ALTER DATABASE [Sygehus_Nord_Patiens] SET CURSOR_DEFAULT  GLOBAL 
+GO
+ALTER DATABASE [Sygehus_Nord_Patiens] SET CONCAT_NULL_YIELDS_NULL OFF 
+GO
+ALTER DATABASE [Sygehus_Nord_Patiens] SET NUMERIC_ROUNDABORT OFF 
+GO
+ALTER DATABASE [Sygehus_Nord_Patiens] SET QUOTED_IDENTIFIER OFF 
+GO
+ALTER DATABASE [Sygehus_Nord_Patiens] SET RECURSIVE_TRIGGERS OFF 
+GO
+ALTER DATABASE [Sygehus_Nord_Patiens] SET  DISABLE_BROKER 
+GO
+ALTER DATABASE [Sygehus_Nord_Patiens] SET AUTO_UPDATE_STATISTICS_ASYNC OFF 
+GO
+ALTER DATABASE [Sygehus_Nord_Patiens] SET DATE_CORRELATION_OPTIMIZATION OFF 
+GO
+ALTER DATABASE [Sygehus_Nord_Patiens] SET TRUSTWORTHY OFF 
+GO
+ALTER DATABASE [Sygehus_Nord_Patiens] SET ALLOW_SNAPSHOT_ISOLATION OFF 
+GO
+ALTER DATABASE [Sygehus_Nord_Patiens] SET PARAMETERIZATION SIMPLE 
+GO
+ALTER DATABASE [Sygehus_Nord_Patiens] SET READ_COMMITTED_SNAPSHOT OFF 
+GO
+ALTER DATABASE [Sygehus_Nord_Patiens] SET HONOR_BROKER_PRIORITY OFF 
+GO
+ALTER DATABASE [Sygehus_Nord_Patiens] SET RECOVERY FULL 
+GO
+ALTER DATABASE [Sygehus_Nord_Patiens] SET  MULTI_USER 
+GO
+ALTER DATABASE [Sygehus_Nord_Patiens] SET PAGE_VERIFY CHECKSUM  
+GO
+ALTER DATABASE [Sygehus_Nord_Patiens] SET DB_CHAINING OFF 
+GO
+ALTER DATABASE [Sygehus_Nord_Patiens] SET FILESTREAM( NON_TRANSACTED_ACCESS = OFF ) 
+GO
+ALTER DATABASE [Sygehus_Nord_Patiens] SET TARGET_RECOVERY_TIME = 60 SECONDS 
+GO
+ALTER DATABASE [Sygehus_Nord_Patiens] SET DELAYED_DURABILITY = DISABLED 
+GO
+EXEC sys.sp_db_vardecimal_storage_format N'Sygehus_Nord_Patiens', N'ON'
+GO
+ALTER DATABASE [Sygehus_Nord_Patiens] SET QUERY_STORE = OFF
+GO
+USE [Sygehus_Nord_Patiens]
+GO
+ALTER DATABASE SCOPED CONFIGURATION SET LEGACY_CARDINALITY_ESTIMATION = OFF;
+GO
+ALTER DATABASE SCOPED CONFIGURATION FOR SECONDARY SET LEGACY_CARDINALITY_ESTIMATION = PRIMARY;
+GO
+ALTER DATABASE SCOPED CONFIGURATION SET MAXDOP = 0;
+GO
+ALTER DATABASE SCOPED CONFIGURATION FOR SECONDARY SET MAXDOP = PRIMARY;
+GO
+ALTER DATABASE SCOPED CONFIGURATION SET PARAMETER_SNIFFING = ON;
+GO
+ALTER DATABASE SCOPED CONFIGURATION FOR SECONDARY SET PARAMETER_SNIFFING = PRIMARY;
+GO
+ALTER DATABASE SCOPED CONFIGURATION SET QUERY_OPTIMIZER_HOTFIXES = OFF;
+GO
+ALTER DATABASE SCOPED CONFIGURATION FOR SECONDARY SET QUERY_OPTIMIZER_HOTFIXES = PRIMARY;
+GO
+USE [Sygehus_Nord_Patiens]
+GO
+/****** Object:  User [DB_User_3]    Script Date: 28/08/2017 09:35:53 ******/
+CREATE USER [DB_User_3] FOR LOGIN [DB_User_3] WITH DEFAULT_SCHEMA=[dbo]
+GO
+/****** Object:  User [DB_User_2]    Script Date: 28/08/2017 09:35:53 ******/
+CREATE USER [DB_User_2] FOR LOGIN [DB_User_2] WITH DEFAULT_SCHEMA=[dbo]
+GO
+/****** Object:  User [DB_User]    Script Date: 28/08/2017 09:35:53 ******/
+CREATE USER [DB_User] FOR LOGIN [DB_User] WITH DEFAULT_SCHEMA=[dbo]
+GO
+ALTER ROLE [db_accessadmin] ADD MEMBER [DB_User_3]
+GO
+ALTER ROLE [db_securityadmin] ADD MEMBER [DB_User_3]
+GO
+ALTER ROLE [db_ddladmin] ADD MEMBER [DB_User_3]
+GO
+ALTER ROLE [db_backupoperator] ADD MEMBER [DB_User_3]
+GO
+ALTER ROLE [db_datareader] ADD MEMBER [DB_User_3]
+GO
+ALTER ROLE [db_datawriter] ADD MEMBER [DB_User_3]
+GO
+ALTER ROLE [db_owner] ADD MEMBER [DB_User_2]
+GO
+ALTER ROLE [db_accessadmin] ADD MEMBER [DB_User_2]
+GO
+ALTER ROLE [db_securityadmin] ADD MEMBER [DB_User_2]
+GO
+ALTER ROLE [db_ddladmin] ADD MEMBER [DB_User_2]
+GO
+ALTER ROLE [db_backupoperator] ADD MEMBER [DB_User_2]
+GO
+ALTER ROLE [db_datareader] ADD MEMBER [DB_User_2]
+GO
+ALTER ROLE [db_datawriter] ADD MEMBER [DB_User_2]
+GO
+ALTER ROLE [db_owner] ADD MEMBER [DB_User]
+GO
+ALTER ROLE [db_accessadmin] ADD MEMBER [DB_User]
+GO
+ALTER ROLE [db_securityadmin] ADD MEMBER [DB_User]
+GO
+ALTER ROLE [db_ddladmin] ADD MEMBER [DB_User]
+GO
+ALTER ROLE [db_backupoperator] ADD MEMBER [DB_User]
+GO
+ALTER ROLE [db_datareader] ADD MEMBER [DB_User]
+GO
+ALTER ROLE [db_datawriter] ADD MEMBER [DB_User]
+GO
+/****** Object:  Table [dbo].[tbl_Ailment]    Script Date: 28/08/2017 09:35:53 ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+CREATE TABLE [dbo].[tbl_Ailment](
+	[ID] [int] NOT NULL,
+	[Ailment] [text] NULL,
+PRIMARY KEY CLUSTERED 
+(
+	[ID] ASC
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
+) ON [PRIMARY] TEXTIMAGE_ON [PRIMARY]
+GO
+/****** Object:  Table [dbo].[tbl_Allergy]    Script Date: 28/08/2017 09:35:53 ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+CREATE TABLE [dbo].[tbl_Allergy](
+	[ID] [int] NOT NULL,
+	[Allergy] [nchar](10) NULL,
+ CONSTRAINT [PK_tbl_Allergy] PRIMARY KEY CLUSTERED 
+(
+	[ID] ASC
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
+) ON [PRIMARY]
+GO
+/****** Object:  Table [dbo].[tbl_Booking]    Script Date: 28/08/2017 09:35:53 ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+CREATE TABLE [dbo].[tbl_Booking](
+	[ID] [int] NOT NULL,
+	[PID] [int] NULL,
+	[Room] [text] NULL,
+	[Schedule] [date] NULL,
+	[DrID] [int] NULL,
+PRIMARY KEY CLUSTERED 
+(
+	[ID] ASC
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
+) ON [PRIMARY] TEXTIMAGE_ON [PRIMARY]
+GO
+/****** Object:  Table [dbo].[tbl_MedicalChart]    Script Date: 28/08/2017 09:35:53 ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+CREATE TABLE [dbo].[tbl_MedicalChart](
+	[ID] [int] NOT NULL,
+	[PID] [int] NULL,
+	[AilmentID] [int] NULL,
+	[DrID] [int] NULL,
+	[WardID] [int] NULL,
+	[Room] [text] NULL,
+	[StatusID] [int] NULL,
+	[Notes] [text] NULL,
+	[Hospital] [text] NULL,
+	[In_date] [date] NULL,
+	[Out_Date] [date] NULL,
+PRIMARY KEY CLUSTERED 
+(
+	[ID] ASC
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
+) ON [PRIMARY] TEXTIMAGE_ON [PRIMARY]
+GO
+/****** Object:  Table [dbo].[tbl_MedicalRecord]    Script Date: 28/08/2017 09:35:53 ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+CREATE TABLE [dbo].[tbl_MedicalRecord](
+	[ID] [int] NOT NULL,
+	[AilmentID] [int] NULL,
+	[MedicalChartID] [int] NULL,
+ CONSTRAINT [PK__MedicalR__3214EC2731EDEE56] PRIMARY KEY CLUSTERED 
+(
+	[ID] ASC
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
+) ON [PRIMARY]
+GO
+/****** Object:  Table [dbo].[tbl_Medication]    Script Date: 28/08/2017 09:35:53 ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+CREATE TABLE [dbo].[tbl_Medication](
+	[ID] [int] NOT NULL,
+	[Name] [text] NULL,
+	[Effect] [text] NULL,
+PRIMARY KEY CLUSTERED 
+(
+	[ID] ASC
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
+) ON [PRIMARY] TEXTIMAGE_ON [PRIMARY]
+GO
+/****** Object:  Table [dbo].[tbl_Patient]    Script Date: 28/08/2017 09:35:53 ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+CREATE TABLE [dbo].[tbl_Patient](
+	[PID] [int] NOT NULL,
+PRIMARY KEY CLUSTERED 
+(
+	[PID] ASC
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
+) ON [PRIMARY]
+GO
+/****** Object:  Table [dbo].[tbl_PatientAllergy]    Script Date: 28/08/2017 09:35:53 ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+CREATE TABLE [dbo].[tbl_PatientAllergy](
+	[ID] [int] NULL,
+	[PID] [int] NULL,
+	[AllergyID] [int] NULL
+) ON [PRIMARY]
+GO
+/****** Object:  Table [dbo].[tbl_PatientMedication]    Script Date: 28/08/2017 09:35:53 ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+CREATE TABLE [dbo].[tbl_PatientMedication](
+	[ID] [int] NOT NULL,
+	[ChartID] [int] NULL,
+	[MedsID] [int] NULL,
+PRIMARY KEY CLUSTERED 
+(
+	[ID] ASC
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
+) ON [PRIMARY]
+GO
+/****** Object:  Table [dbo].[tbl_PersonalInfo]    Script Date: 28/08/2017 09:35:53 ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+CREATE TABLE [dbo].[tbl_PersonalInfo](
+	[ID] [int] NOT NULL,
+	[PID] [int] NULL,
+	[Name] [text] NULL,
+	[CPR] [text] NULL,
+	[Mail] [text] NULL,
+	[Phone] [int] NULL,
+	[Address] [nchar](10) NULL,
+	[ZipCode] [nchar](10) NULL,
+	[City] [text] NULL,
+	[Sex] [text] NULL,
+	[Age] [int] NULL,
+ CONSTRAINT [PK__Personal__3214EC27D559CD55] PRIMARY KEY CLUSTERED 
+(
+	[ID] ASC
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
+) ON [PRIMARY] TEXTIMAGE_ON [PRIMARY]
+GO
+/****** Object:  Table [dbo].[tbl_Status]    Script Date: 28/08/2017 09:35:53 ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+CREATE TABLE [dbo].[tbl_Status](
+	[ID] [int] NOT NULL,
+	[Status_Info] [text] NULL,
+PRIMARY KEY CLUSTERED 
+(
+	[ID] ASC
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
+) ON [PRIMARY] TEXTIMAGE_ON [PRIMARY]
+GO
+/****** Object:  Table [dbo].[tbl_Treatment]    Script Date: 28/08/2017 09:35:53 ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+CREATE TABLE [dbo].[tbl_Treatment](
+	[ID] [int] NOT NULL,
+	[ChartID] [int] NULL,
+	[Exam] [text] NULL,
+	[Schedule] [date] NULL,
+	[Treatment] [text] NULL,
+PRIMARY KEY CLUSTERED 
+(
+	[ID] ASC
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
+) ON [PRIMARY] TEXTIMAGE_ON [PRIMARY]
+GO
+ALTER TABLE [dbo].[tbl_Booking]  WITH CHECK ADD  CONSTRAINT [FK_Booking_Patients] FOREIGN KEY([PID])
+REFERENCES [dbo].[tbl_Patient] ([PID])
+GO
+ALTER TABLE [dbo].[tbl_Booking] CHECK CONSTRAINT [FK_Booking_Patients]
+GO
+ALTER TABLE [dbo].[tbl_MedicalChart]  WITH CHECK ADD  CONSTRAINT [FK_MedicalChart_Patients] FOREIGN KEY([PID])
+REFERENCES [dbo].[tbl_Patient] ([PID])
+GO
+ALTER TABLE [dbo].[tbl_MedicalChart] CHECK CONSTRAINT [FK_MedicalChart_Patients]
+GO
+ALTER TABLE [dbo].[tbl_MedicalChart]  WITH CHECK ADD  CONSTRAINT [FK_MedicalChart_Status] FOREIGN KEY([StatusID])
+REFERENCES [dbo].[tbl_Status] ([ID])
+GO
+ALTER TABLE [dbo].[tbl_MedicalChart] CHECK CONSTRAINT [FK_MedicalChart_Status]
+GO
+ALTER TABLE [dbo].[tbl_MedicalRecord]  WITH CHECK ADD  CONSTRAINT [FK_MedicalRecord_Ailment] FOREIGN KEY([AilmentID])
+REFERENCES [dbo].[tbl_Ailment] ([ID])
+GO
+ALTER TABLE [dbo].[tbl_MedicalRecord] CHECK CONSTRAINT [FK_MedicalRecord_Ailment]
+GO
+ALTER TABLE [dbo].[tbl_MedicalRecord]  WITH CHECK ADD  CONSTRAINT [FK_MedicalRecord_MedicalChart] FOREIGN KEY([MedicalChartID])
+REFERENCES [dbo].[tbl_MedicalChart] ([ID])
+GO
+ALTER TABLE [dbo].[tbl_MedicalRecord] CHECK CONSTRAINT [FK_MedicalRecord_MedicalChart]
+GO
+ALTER TABLE [dbo].[tbl_PatientAllergy]  WITH CHECK ADD  CONSTRAINT [FK_tbl_PatientAllergy_tbl_Allergy] FOREIGN KEY([AllergyID])
+REFERENCES [dbo].[tbl_Allergy] ([ID])
+GO
+ALTER TABLE [dbo].[tbl_PatientAllergy] CHECK CONSTRAINT [FK_tbl_PatientAllergy_tbl_Allergy]
+GO
+ALTER TABLE [dbo].[tbl_PatientAllergy]  WITH CHECK ADD  CONSTRAINT [FK_tbl_PatientAllergy_tbl_Patient] FOREIGN KEY([PID])
+REFERENCES [dbo].[tbl_Patient] ([PID])
+GO
+ALTER TABLE [dbo].[tbl_PatientAllergy] CHECK CONSTRAINT [FK_tbl_PatientAllergy_tbl_Patient]
+GO
+ALTER TABLE [dbo].[tbl_PatientMedication]  WITH CHECK ADD  CONSTRAINT [FK_PatiMeds_MedicalChart] FOREIGN KEY([ChartID])
+REFERENCES [dbo].[tbl_MedicalChart] ([ID])
+GO
+ALTER TABLE [dbo].[tbl_PatientMedication] CHECK CONSTRAINT [FK_PatiMeds_MedicalChart]
+GO
+ALTER TABLE [dbo].[tbl_PatientMedication]  WITH CHECK ADD  CONSTRAINT [FK_PatiMeds_Meds] FOREIGN KEY([MedsID])
+REFERENCES [dbo].[tbl_Medication] ([ID])
+GO
+ALTER TABLE [dbo].[tbl_PatientMedication] CHECK CONSTRAINT [FK_PatiMeds_Meds]
+GO
+ALTER TABLE [dbo].[tbl_PersonalInfo]  WITH CHECK ADD  CONSTRAINT [FK_PersonalInfo_Patients] FOREIGN KEY([PID])
+REFERENCES [dbo].[tbl_Patient] ([PID])
+GO
+ALTER TABLE [dbo].[tbl_PersonalInfo] CHECK CONSTRAINT [FK_PersonalInfo_Patients]
+GO
+ALTER TABLE [dbo].[tbl_Treatment]  WITH CHECK ADD  CONSTRAINT [FK_Treatment_MedicalChart] FOREIGN KEY([ChartID])
+REFERENCES [dbo].[tbl_MedicalChart] ([ID])
+GO
+ALTER TABLE [dbo].[tbl_Treatment] CHECK CONSTRAINT [FK_Treatment_MedicalChart]
+GO
+/****** Object:  StoredProcedure [dbo].[getSomeUsefullData]    Script Date: 28/08/2017 09:35:53 ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+CREATE PROCEDURE [dbo].[getSomeUsefullData] 
+AS
+BEGIN
+SET NOCOUNT ON;
+SELECT * FROM Patients 
+END
+GO
+USE [master]
+GO
+ALTER DATABASE [Sygehus_Nord_Patiens] SET  READ_WRITE 
+GO
