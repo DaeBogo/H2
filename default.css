@@ -1,0 +1,41 @@
+* {
+    margin: 0;
+    padding: 0;
+}
+
+html {
+    background-color: lightgray;
+}
+
+p {
+    font-family: "Times New Roman, Times, serif";
+    font-size: 20px;
+    align-items: center;
+    display: fixed;
+    position: flex;
+}
+
+h1 {
+    height: 100%;
+    width: 100%;
+    display: flex;
+    position: top;
+    align-items: center;
+    justify-content: center;
+}
+.center {
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.box {
+    margin: 200px;
+    padding: 20px;
+    border: 5px dotted grey ;
+    position: fixed;
+    align-items: center;
+}
+
+.button {
+    font-size: 16px;
+}
